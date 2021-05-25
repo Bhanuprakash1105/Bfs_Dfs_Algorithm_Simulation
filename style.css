@@ -1,0 +1,28 @@
+html {
+    background-color: black;
+}
+
+#operations {
+    float: left;
+    background-color: black;
+    border: 0px;
+    margin: 1vh 1vw 1vh 1vw;
+    display: block;
+    padding: 0px;    
+}
+
+#frameCanvas {
+    float: left;
+    background-color: black;
+    margin: 1vh 1vw 1vh 1vw;
+}
+
+.myButtons {
+    background-color: rgba(0, 0, 255, 0.25);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    margin: 1vh 0vw 1vh 0vw;
+    border: 0px;
+}
