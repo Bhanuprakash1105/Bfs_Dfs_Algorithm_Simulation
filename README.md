@@ -1,5 +1,5 @@
 # Bfs_Dfs_Algorithm_Simulation
-### Breadth-First Search and Depth First Search Algorithms Simulation using Javascript HTML Canvas 
+### Breadth First Search and Depth First Search Algorithms Simulation using Javascript HTML Canvas 
 
 ### Make sure that "index.html", "script.js" and "style.css" all the files are present in the same folder.
 
