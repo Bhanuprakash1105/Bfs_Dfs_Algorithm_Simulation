@@ -13,6 +13,9 @@
 
 ### After running a search algorithm use RESET button for reseting the start and end points for running more searches
 
+### _Note that the number of circles, the size of buttons and the font size will change dynamically with respect to the browser window size as shown in the below image_
+![image 8](https://github.com/Bhanuprakash1105/Bfs_Dfs_Algorithm_Simulation/blob/main/8.jpg)
+
 ### Below are few more images of the simulation
 ![image 4](https://github.com/Bhanuprakash1105/Bfs_Dfs_Algorithm_Simulation/blob/main/1.jpg)
 ![image 5](https://github.com/Bhanuprakash1105/Bfs_Dfs_Algorithm_Simulation/blob/main/2.jpg)
