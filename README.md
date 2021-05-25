@@ -1,10 +1,9 @@
 # Bfs_Dfs_Algorithm_Simulation
 ### Breadth-First Search and Depth First Search Algorithms Simulation using Javascript HTML Canvas 
 
+### Make sure that "index.html", "script.js" and "style.css" all the files are present in the same folder.
+
 ### Open the "index.html" in the browser to start the simulation
-
-### Make sure that "index.html", "script.js" and "style.css" all the files are present in the same folder. 
-
 ### After opening the "index.html" file in the browser you can observe the page similar to the image shown below
 ![image 1](https://github.com/Bhanuprakash1105/Bfs_Dfs_Algorithm_Simulation/blob/main/5.jpg)
 
