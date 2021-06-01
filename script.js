@@ -39,19 +39,23 @@ function drawCircles(c, radius) {
 	return arr;
 }
 
-var radius = 10;
+var radius = 0.015 * Math.min(canvas.height, canvas.width);
 var arr_circles = drawCircles(c, radius);
 var loc = [-1, -1, -1, -1];
 var ind = [-1, -1, -1, -1];
 var count = 1;
 var removeColor = false;
 
-function canvasResize()
+var canvasResizeFlagFail = false;
+
+async function canvasResize()
 {
+	if(canvasResizeFlagFail) { await 1; return 1; }
 	canvas = null;
 	canvas = document.getElementById('frameCanvas');
 	canvas.width = window.innerWidth * 0.75;
 	canvas.height = window.innerHeight * 0.9;
+	radius = 0.015 * Math.min(canvas.height, canvas.width);
 	arr_circles = drawCircles(c, radius);
 	loc = [-1, -1, -1, -1];
 	ind = [-1, -1, -1, -1];
@@ -69,7 +73,10 @@ function canvasResize()
 	}
 };
 
+var clickedCircleFlagFail = false;
+
 function clickedCircle(x, y) {
+	if(clickedCircleFlagFail) { return [-1, -1, -1, -1]; }
 	let ret1 = -1, ret2 = -1; 
 	for(let i = 0; i < arr_circles.length; ++i)
 	{
@@ -110,7 +117,7 @@ function surrBfs(i, j, queue, ind, visited) {
 				colorCircle(arr_circles[arri[x]][arrj[y]][0], arr_circles[arri[x]][arrj[y]][1], "rgb(204, 0, 255)");
 				alert("Finished");
 				removeColor = true;
-				return;
+				return [];
 			}
 			queue.push([arri[x], arrj[y]]);
 			colorCircle(arr_circles[arri[x]][arrj[y]][0], arr_circles[arri[x]][arrj[y]][1], "rgb(255, 128, 0)");
@@ -119,7 +126,9 @@ function surrBfs(i, j, queue, ind, visited) {
 	return queue;
 }
 
-function goBfs() {
+async function goBfs() {
+	clickedCircleFlagFail = await true;
+	canvasResizeFlagFail = await true;
 	if(removeColor == true)
 	{
 		loc = [-1, -1, -1, -1];
@@ -149,7 +158,7 @@ function goBfs() {
 			visited[x][y] = false;
 		}
 	}
-	var queue = [];
+	var queue = new Array();
 	queue.push([i, j]);
 	while(queue.length != 0)
 	{
@@ -158,15 +167,20 @@ function goBfs() {
 			colorCircle(arr_circles[curr[0]][curr[1]][0], arr_circles[curr[0]][curr[1]][1], "rgb(204, 0, 255)");
 			alert("Finished");
 			removeColor = true;
-			return;
+			break;
 		}
 		if(visited[curr[0]][curr[1]] == true) { continue; }
 		visited[curr[0]][curr[1]] = true;
 		queue = surrBfs(curr[0], curr[1], queue, ind, visited);
+		await new Promise(r => setTimeout(r, 25));
 	}
+	canvasResizeFlagFail = await false;
+	clickedCircleFlagFail = await false;
 }
 
-function goDfs() {
+async function goDfs() {
+	clickedCircleFlagFail = await true;
+	canvasResizeFlagFail = await true;
 	if(removeColor == true)
 	{
 		loc = [-1, -1, -1, -1];
@@ -224,7 +238,10 @@ function goDfs() {
 				if(visited2[arri[x]][arrj[y]] != true) { stack.push([arri[x], arrj[y]]); }
 			}
 		}
+		await new Promise(r => setTimeout(r, 25));
 	}
+	canvasResizeFlagFail = await false;
+	clickedCircleFlagFail = await false;
 }
 
 canvas.addEventListener('click', (event) => {
